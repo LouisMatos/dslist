@@ -10,8 +10,10 @@ import br.com.matosit.dsslist.dto.GameDTO;
 import br.com.matosit.dsslist.dto.GameMinDTO;
 import br.com.matosit.dsslist.projections.GameMinProjection;
 import br.com.matosit.dsslist.repositories.GameRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class GameService {
 
 	@Autowired
@@ -19,6 +21,7 @@ public class GameService {
 
 	@Transactional(readOnly = true)
 	public List<GameMinDTO> findAll() {
+		log.info("Buscando todos os Jogos!!");
 		return gameRepository.findAll().stream().map(x -> new GameMinDTO(x)).toList();
 	}
 
